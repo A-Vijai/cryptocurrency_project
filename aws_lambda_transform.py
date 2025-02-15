@@ -57,20 +57,6 @@ def get_parsed_raw_jobs_data(json_raw_data):
     return jobs_df
         
         
-    # if we want to achieve using append without dict
-    # for job in json_raw_data:
-    #     parsed_job = {
-    #         'job_id': job['id'],
-    #         'job_title': job['title'],
-    #         'job_location': job['location']['display_name'],
-    #         'job_company': job['company']['display_name'],
-    #         'job_category': job['category']['label'],
-    #         'job_description': job['description'],
-    #         'job_url': job['redirect_url'],
-    #         'job_created': job['created']
-    #     }
-    #     parsed_jobs.append(parsed_job)
-    
 def delete_s3_object(bucket_name, object_key):
     try:
         # Delete the object
@@ -106,7 +92,6 @@ def lambda_handler(event, context):
     # Process the raw data file provided by the extract lambda function
     logger.info("Processing raw data file from previous Step Function output")
 
-    # Get the S3 object key from Step Function's output
     s3_bucket = "crypto-etl-bucket"
     s3_object ="raw_data/to_processed/"
     
